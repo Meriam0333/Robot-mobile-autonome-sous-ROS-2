@@ -51,7 +51,7 @@ Remarques :
   l’architecture logicielle et les algorithmes de navigation.
 
 Auteur : Meriam BANI , Abdellahi TFEIL , Aboubecrine cheikh BOUYE , Farah HENTATI
-Année : 2525-2026
+Année : 2025-2026
 
 Rapport technique:
 [ Télécharger le rapport ](https://drive.google.com/file/d/1jW24iy5zHKQ6aHnQ4ua7xWfTjyr0Pex4/view?usp=sharing)
