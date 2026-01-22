@@ -1,0 +1,45 @@
+[0.041s] Invoking command in '/home/abou/ros2_works/build/my_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/abou/turtlebot3_ws/install/turtlebot3_teleop:/home/abou/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake /home/abou/ros2_works/src/my_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/abou/ros2_works/install/my_robot_description
+[0.758s] -- The C compiler identification is GNU 11.4.0
+[1.444s] -- The CXX compiler identification is GNU 11.4.0
+[1.480s] -- Detecting C compiler ABI info
+[1.703s] -- Detecting C compiler ABI info - done
+[1.726s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.783s] -- Detecting C compile features
+[1.789s] -- Detecting C compile features - done
+[1.796s] -- Detecting CXX compiler ABI info
+[2.075s] -- Detecting CXX compiler ABI info - done
+[2.100s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.100s] -- Detecting CXX compile features
+[2.101s] -- Detecting CXX compile features - done
+[2.156s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.667s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.870s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[3.276s] -- Configuring done
+[3.287s] -- Generating done
+[3.295s] -- Build files have been written to: /home/abou/ros2_works/build/my_robot_description
+[3.313s] Invoked command in '/home/abou/ros2_works/build/my_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/abou/turtlebot3_ws/install/turtlebot3_teleop:/home/abou/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake /home/abou/ros2_works/src/my_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/abou/ros2_works/install/my_robot_description
+[3.314s] Invoking command in '/home/abou/ros2_works/build/my_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/abou/turtlebot3_ws/install/turtlebot3_teleop:/home/abou/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/abou/ros2_works/build/my_robot_description -- -j8 -l8
+[3.413s] Invoked command in '/home/abou/ros2_works/build/my_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/abou/turtlebot3_ws/install/turtlebot3_teleop:/home/abou/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/abou/ros2_works/build/my_robot_description -- -j8 -l8
+[3.439s] Invoking command in '/home/abou/ros2_works/build/my_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/abou/turtlebot3_ws/install/turtlebot3_teleop:/home/abou/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/abou/ros2_works/build/my_robot_description
+[3.454s] -- Install configuration: ""
+[3.455s] -- Execute custom install script
+[3.456s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/urdf/my_robot.urdf
+[3.486s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/launch/gazebo.launch.py
+[3.514s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/lib/my_robot_description/obstacle_avoidance.py
+[3.535s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/lib/my_robot_description/simple_delivery.py
+[3.563s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/ament_index/resource_index/package_run_dependencies/my_robot_description
+[3.586s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/ament_index/resource_index/parent_prefix_path/my_robot_description
+[3.610s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/environment/ament_prefix_path.sh
+[3.633s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/environment/ament_prefix_path.dsv
+[3.657s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/environment/path.sh
+[3.679s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/environment/path.dsv
+[3.703s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/local_setup.bash
+[3.728s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/local_setup.sh
+[3.747s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/local_setup.zsh
+[3.774s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/local_setup.dsv
+[3.796s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/package.dsv
+[3.818s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/ament_index/resource_index/packages/my_robot_description
+[3.883s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/cmake/my_robot_descriptionConfig.cmake
+[3.911s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/cmake/my_robot_descriptionConfig-version.cmake
+[3.928s] -- Symlinking: /home/abou/ros2_works/install/my_robot_description/share/my_robot_description/package.xml
+[3.952s] Invoked command in '/home/abou/ros2_works/build/my_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/abou/turtlebot3_ws/install/turtlebot3_teleop:/home/abou/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/abou/ros2_works/build/my_robot_description

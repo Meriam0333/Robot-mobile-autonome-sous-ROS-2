@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<robot name="mini_4wd_robot">
+
+  <!-- ===================== BASE ===================== -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.16 0.11 0.04"/>
+      </geometry>
+      <origin xyz="0 0 0.02"/>
+      <material name="transparent_body">
+        <color rgba="0.9 0.9 0.95 0.5"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.16 0.11 0.04"/>
+      </geometry>
+      <origin xyz="0 0 0.02"/>
+    </collision>
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.01" iyy="0.01" izz="0.015"
+               ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+  </link>
+
+  <!-- ===================== ROUES ===================== -->
+  <!-- Avant gauche -->
+  <link name="front_left_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <material name="wheel_mat">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"
+               ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+  </link>
+
+  <!-- Avant droite -->
+  <link name="front_right_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <material name="wheel_mat"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"
+               ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+  </link>
+
+  <!-- Arrière gauche (motrice) -->
+  <link name="rear_left_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <material name="wheel_mat"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"
+               ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+  </link>
+
+  <!-- Arrière droite (motrice) -->
+  <link name="rear_right_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <material name="wheel_mat"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="0.0001" iyy="0.0001" izz="0.0001"
+               ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+  </link>
+
+  <!-- Joints roues -->
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child  link="front_left_wheel_link"/>
+    <origin xyz="0.065 0.06 0.015" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child  link="front_right_wheel_link"/>
+    <origin xyz="0.065 -0.06 0.015" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child  link="rear_left_wheel_link"/>
+    <origin xyz="-0.065 0.06 0.015" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child  link="rear_right_wheel_link"/>
+    <origin xyz="-0.065 -0.06 0.015" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- ===================== CAMERA ===================== -->
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.03 0.03 0.03"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="cam_mat">
+        <color rgba="0.2 0.2 0.8 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="camera_link"/>
+    <origin xyz="0.08 0 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ===================== ULTRASONS AVANT ===================== -->
+  <!-- Capteur ultrason gauche -->
+  <link name="ultrasonic_left_link">
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="us_mat_left">
+        <color rgba="0.2 0.8 0.2 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="ultrasonic_left_joint" type="fixed">
+    <parent link="base_link"/>
+    <!-- légèrement à gauche à l'avant -->
+    <child  link="ultrasonic_left_link"/>
+    <origin xyz="0.08 0.03 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Capteur ultrason droit -->
+  <link name="ultrasonic_right_link">
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="us_mat_right">
+        <color rgba="0.2 0.8 0.2 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="ultrasonic_right_joint" type="fixed">
+    <parent link="base_link"/>
+    <!-- légèrement à droite à l'avant -->
+    <child  link="ultrasonic_right_link"/>
+    <origin xyz="0.08 -0.03 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ===== Plugin diff drive (roues arrière motrices) ===== -->
+  <gazebo>
+    <plugin name="gazebo_ros_diff_drive" filename="libgazebo_ros_diff_drive.so">
+
+      <ros>
+        <namespace>/</namespace>
+      </ros>
+
+      <update_rate>50</update_rate>
+
+      <left_joint>rear_left_wheel_joint</left_joint>
+      <right_joint>rear_right_wheel_joint</right_joint>
+
+      <wheel_separation>0.12</wheel_separation>
+      <wheel_diameter>0.06</wheel_diameter>
+
+      <max_wheel_torque>5.0</max_wheel_torque>
+      <max_wheel_acceleration>5.0</max_wheel_acceleration>
+
+      <command_topic>cmd_vel</command_topic>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+    </plugin>
+  </gazebo>
+
+  <!-- ===== Plugin caméra sur camera_link ===== -->
+  <gazebo reference="camera_link">
+    <sensor name="camera" type="camera">
+      <pose>0 0 0 0 0 0</pose>
+      <update_rate>15.0</update_rate>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>5.0</far>
+        </clip>
+      </camera>
+      <plugin name="gazebo_ros_camera" filename="libgazebo_ros_camera.so">
+        <ros>
+          <remapping>image:=/camera/image_raw</remapping>
+        </ros>
+        <frame_name>camera_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- ===== Plugins capteurs ultrason ===== -->
+
+  <!-- Ultrason avant gauche -->
+  <gazebo reference="ultrasonic_left_link">
+    <sensor name="ultrasonic_left" type="ray">
+      <pose>0 0 0 0 0 0</pose>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>20</update_rate>
+
+      <ray>
+        <scan>
+          <horizontal>
+            <!-- petit cône devant le robot -->
+            <samples>5</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.35</min_angle>  <!-- ~ -20° -->
+            <max_angle>0.35</max_angle>   <!-- ~ +20° -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.02</min>
+          <max>2.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+
+      <plugin name="ultrasonic_left_plugin" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <!-- publie sur /ultrasonic_left -->
+          <remapping>~/out:=/ultrasonic_left</remapping>
+        </ros>
+        <output_type>sensor_msgs/Range</output_type>
+        <radiation_type>ultrasound</radiation_type>
+        <frame_name>ultrasonic_left_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- Ultrason avant droit -->
+  <gazebo reference="ultrasonic_right_link">
+    <sensor name="ultrasonic_right" type="ray">
+      <pose>0 0 0 0 0 0</pose>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>20</update_rate>
+
+      <ray>
+        <scan>
+          <horizontal>
+            <!-- petit cône devant le robot -->
+            <samples>5</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.35</min_angle>  <!-- ~ -20° -->
+            <max_angle>0.35</max_angle>   <!-- ~ +20° -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.02</min>
+          <max>2.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+
+      <plugin name="ultrasonic_right_plugin" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <!-- publie sur /ultrasonic_right -->
+          <remapping>~/out:=/ultrasonic_right</remapping>
+        </ros>
+        <output_type>sensor_msgs/Range</output_type>
+        <radiation_type>ultrasound</radiation_type>
+        <frame_name>ultrasonic_right_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>
